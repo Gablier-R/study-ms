@@ -13,31 +13,32 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfiguration {
 
     @Bean
-    Queue createQueuePendingMsAnalyzeCredit(){
+    public Queue createQueuePendingMsAnalyzeCredit(){
         return QueueBuilder.durable("proposta-pendente.ms-analise-credito").build();
     }
 
     @Bean
-    Queue createQueuePendingMsNotification(){
+    public Queue createQueuePendingMsNotification(){
         return QueueBuilder.durable("proposta-pendente.ms-notificacao").build();
     }
 
     @Bean
-    Queue createQueueMsDoneMsProposal(){
+    public Queue createQueueMsDoneMsProposal(){
         return QueueBuilder.durable("proposta-concluida.ms-proposta").build();
     }
 
     @Bean
-    Queue createQueueMsDoneMsNotification(){
+    public Queue createQueueMsDoneMsNotification(){
         return QueueBuilder.durable("proposta-concluida.ms-notificacao").build();
     }
 
     @Bean
-    RabbitAdmin createRabbitAdmin(ConnectionFactory connectionFactory){
+    public RabbitAdmin createRabbitAdmin(ConnectionFactory connectionFactory){
         return new RabbitAdmin(connectionFactory);
     }
 
-    ApplicationListener<ApplicationReadyEvent> initAdmin (RabbitAdmin rabbitAdmin){
+    @Bean
+    public ApplicationListener<ApplicationReadyEvent> initAdmin (RabbitAdmin rabbitAdmin){
         return event -> rabbitAdmin.initialize();
     }
 }
