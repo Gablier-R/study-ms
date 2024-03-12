@@ -34,4 +34,6 @@ public interface ProposalMapper {
     ProposalResponseDto convertEntityToDto(Proposal proposal);
 
     List<ProposalResponseDto> convertListEntityToListDto(List<Proposal> proposalIterator);
+
+
 }

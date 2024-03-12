@@ -7,7 +7,7 @@ public record ProposalResponseDto(
         String cpf,
         String phone,
         Double income,
-        Double requestedAmount,
+        String requestedAmount,
         int paymentTerm,
         Boolean isApproved,
         String observation
